@@ -1,0 +1,23 @@
+childhood {
+  .inner {
+    height: 50vh !important;
+    margin-bottom: 0 !important;
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, rgba(white, 0.8)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, rgba(white, 0.8)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, rgba(white, 0.8)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, rgba(white, 0.8)); /* Standard syntax (must be last) */
+
+    .circle {
+      background-color: #ba1a3a;
+      height: 10vh;
+      width: 10vh;
+      margin: 0 auto;
+      transition: all 1s;
+    }
+
+    h1 {
+      transition: all 1s;
+    }
+  }
+}

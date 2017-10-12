@@ -16,30 +16,42 @@
   }
 
   /* @ngInject */
-  function childhoodController($storytelling, $log) {
+  function childhoodController($storytelling, $log, $element, d3) {
     var vm = this;
 
     $storytelling.scroll('#childhood .outer', 'childhoodScrolling', 3, animate);
 
-    vm.dynamicText = 'Hola, soy un texto dinámico';
+    vm.dynamicText = '¡Ahora estoy arriba, mira esto!';
+    d3.select($element[0]).select('.circle').style('display', 'none');    
 
     function animate() {
       $log.log('mapa', $storytelling.currentSlide)
       if($storytelling.currentBreakPoint == '#childhood .outer') {
         switch($storytelling.currentSlide) {
           case 0:
-            vm.dynamicText = 'Hola, soy un texto dinámico';
+            vm.dynamicText = '¡Ahora estoy arriba, mira esto!';
+            d3.select($element[0]).select('h1').style('display', 'block');
+            d3.select($element[0]).select('.circle').style('display', 'none');
+
             break;
           case 1:
-            vm.dynamicText = 'Siempre estoy visible, pero cambia mi contenido';
+            d3.select($element[0]).select('h1').style('display', 'none');
+            d3.select($element[0]).select('.circle').style('display', 'block');
+            $storytelling.animateElem('#childhood .circle', 'fadeIn');
+            d3.select($element[0]).select('.circle').style('width', '5vh')            
+              .style('height', '5vh');
             break;
           case 2:
-            vm.dynamicText = '¡Y también puedo bailar!';
-            $storytelling.animateElem('#childhood .inner h1', 'shake');
+            vm.dynamicText = '¡También puede crecer!';
+            d3.select($element[0]).select('h1').style('display', 'block');     
+            d3.select($element[0]).select('.circle').style('display', 'block')
+              .style('width', '20vh')            
+              .style('height', '20vh');
+
             break;
         }
       } else {
-        vm.dynamicText = '';
+        d3.select($element[0]).select('.circle').style('display', 'none');
       }
     }
   }

@@ -30,13 +30,16 @@
           case 0:
             vm.dynamicText = 'Hola, soy un texto dinámico';
             break;
+
           case 1:
             vm.dynamicText = 'Siempre estoy visible, pero cambia mi contenido';
             break;
+
           case 2:
             vm.dynamicText = '¡Y también puedo bailar!';
             $storytelling.animateElem('#infancy .inner h1', 'shake');
             break;
+            
         }
       } else {
         vm.dynamicText = '';

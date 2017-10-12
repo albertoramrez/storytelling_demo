@@ -1,5 +1,19 @@
 # Storytelling demo
 
+## Dependencies 
+
+```
+angular v1.5
+d3 v4
+fixedto
+scrollwatcher
+animate.css
+jquery
+
+angular-material
+materialize
+```
+
 ## Serve project local
 
 ```

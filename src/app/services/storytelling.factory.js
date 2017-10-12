@@ -132,7 +132,8 @@
           active_pos.translateX = -(active_pos.centroidX * scale * 2);
           active_pos.translateY = -(active_pos.centroidY * scale);
 
-          groupElement.transition()
+          groupElement
+            .transition()
               .duration(600)
               .attr('transform', 'translate(' + active_pos.translateX + ',' + active_pos.translateY + ') scale(' + scale + ')')
         });

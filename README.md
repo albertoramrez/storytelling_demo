@@ -1,6 +1,6 @@
 # Storytelling demo
 
-## Dependencies 
+## Dependencies
 
 ```
 angular v1.5

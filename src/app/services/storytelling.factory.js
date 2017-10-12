@@ -8,14 +8,14 @@
   /* @ngInject */
   function storytelling(scrollWatcher, $timeout, $rootScope, $q, d3, $document){
     var vm = {};
-    vm.currentBreakPoint = 0;
-    vm.currentSlide = 0;
-    vm.bpHasChanged = false;
-    vm.scroll = initScroll;
-    vm.animateElem = animateElem;
-    vm.animateD3 = animateD3;
-    vm.zoomTo = zoomTo;
-    vm.resetZoom = resetZoom;
+    vm.currentBreakPoint  = 0;
+    vm.currentSlide       = 0;
+    vm.bpHasChanged       = false;
+    vm.scroll             = initScroll;
+    vm.animateElem        = animateElem;
+    vm.animateD3          = animateD3;
+    vm.zoomTo             = zoomTo;
+    vm.resetZoom          = resetZoom;
 
     /** Init scroll behaviour on .outer and .inner divs
      * @param {string} parent - Name of parent to fixed scroll
@@ -44,7 +44,12 @@
       });
     }
 
-    /* Calculate slide number that has to be seen
+    /**
+     * Calculate slide number that has to be seen
+     * @param {number} end - End percentage
+     * @param {number} start - Start percentage
+     * @param {number} slidesLength - Quantity of slides defined
+     * @param {number} scrollPercent - Current scroll percentage
      */
     function getSlide(end, start, slidesLength, scrollPercent){
       if(slidesLength == 0) {
@@ -54,6 +59,11 @@
       return Math.floor((scrollPercent - start) / mul);
     }
 
+    /**
+     * Animate element using jQuery functions and animatecss
+     * @param {selector} element 
+     * @param {string} animationName 
+     */
     function animateElem(element, animationName){
       return $q(function(resolve) { //, reject) {
         var animationEnds = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -64,6 +74,11 @@
       })
     }
 
+    /**
+     * Animate elements using D3 and animatecss. It will replace ALL classes
+     * @param {selector} element 
+     * @param {string} animationName 
+     */
     function animateD3(element, animationName) {
       return $q(function(resolve) { //} reject) {
         d3.selectAll(element).attr('class', null);
@@ -76,13 +91,22 @@
       });
     }
 
+    /**
+     * Resets group element (SVG) xoom to 0,0 and scale 1
+     * @param {d3 selection} groupElement 
+     */
     function resetZoom(groupElement) {
       groupElement.transition()
         .duration(500)
         .attr('transform', 'translate(0,0) scale(1)')
     }
 
-    /* Zoom behaviour functions */
+    /**
+     * Zoom group element (SVG) to calculated position of selector
+     * Results may vary according to SVG properties
+     * @param {d3 selection} groupElement 
+     * @param {string selector} selector 
+     */
     function zoomTo(groupElement, selector) {
       if(groupElement && selector && $document[0].querySelector(selector)) {
         $timeout(function(){

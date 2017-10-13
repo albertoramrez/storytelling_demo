@@ -29,6 +29,7 @@
         scrollWatcher({
           parent: parent,
           onUpdate: function(scrollPercent, parentElement) {
+            //Se ejecuta todo el tiempo, indica cuanto porcentaje lleva de scroll
             if(vm[scrollVarName] != scrollPercent) { // scrolling position has changed
               $rootScope.$apply(function(){
                 vm[scrollVarName] = (vm[scrollVarName] != scrollPercent) ? scrollPercent : vm[scrollVarName];
@@ -61,8 +62,8 @@
 
     /**
      * Animate element using jQuery functions and animatecss
-     * @param {selector} element 
-     * @param {string} animationName 
+     * @param {selector} element
+     * @param {string} animationName
      */
     function animateElem(element, animationName){
       return $q(function(resolve) { //, reject) {
@@ -76,8 +77,8 @@
 
     /**
      * Animate elements using D3 and animatecss. It will replace ALL classes
-     * @param {selector} element 
-     * @param {string} animationName 
+     * @param {selector} element
+     * @param {string} animationName
      */
     function animateD3(element, animationName) {
       return $q(function(resolve) { //} reject) {
@@ -93,7 +94,7 @@
 
     /**
      * Resets group element (SVG) xoom to 0,0 and scale 1
-     * @param {d3 selection} groupElement 
+     * @param {d3 selection} groupElement
      */
     function resetZoom(groupElement) {
       groupElement.transition()
@@ -104,16 +105,16 @@
     /**
      * Zoom group element (SVG) to calculated position of selector
      * Results may vary according to SVG properties
-     * @param {d3 selection} groupElement 
-     * @param {string selector} selector 
+     * @param {d3 selection} groupElement
+     * @param {string selector} selector
      */
     function zoomTo(groupElement, selector) {
       if(groupElement && selector && $document[0].querySelector(selector)) {
         $timeout(function(){
-          
+
           var transform = 'translate(0,0)scale(1)';
           groupElement.attr('transform', null);
-          
+
           var clientRect = $document[0].querySelector(selector).getBoundingClientRect();
           var bbox = angular.element(selector)[0].getBBox();
           var svg = groupElement._groups[0][0].parentNode.getBoundingClientRect();

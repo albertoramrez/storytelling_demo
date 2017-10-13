@@ -11,14 +11,14 @@
       controller: infancyController,
       controllerAs: 'vm',
       bindToController: true,
-      bindings: {}  
+      bindings: {}
     }
   }
 
   /* @ngInject */
   function infancyController($storytelling, $log) {
     var vm = this;
-
+    //Sección  fija, se divide en tres, cambia el contenido
     $storytelling.scroll('#infancy .outer', 'infancyScrolling', 3, animate);
 
     vm.dynamicText = 'Hola, soy un texto dinámico';
@@ -37,9 +37,11 @@
 
           case 2:
             vm.dynamicText = '¡Y también puedo bailar!';
-            $storytelling.animateElem('#infancy .inner h1', 'shake');
+            $storytelling.animateElem('#infancy .inner h1', 'shake').then(function(){
+              $storytelling.animateElem('#infancy .inner h1', 'flip')
+            });
             break;
-            
+
         }
       } else {
         vm.dynamicText = '';

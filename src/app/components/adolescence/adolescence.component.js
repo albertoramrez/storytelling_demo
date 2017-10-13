@@ -26,21 +26,21 @@
         switch($storytelling.currentSlide) {
           case 0:
             d3.select('#waldo')
-              .style('background-position', '0% 0%')
-              .style('background-size', '100%');
+              .style('background-position', '52% 0%')
+              .style('background-size', '88%');
             break;
 
           case 1:
             d3.select('#waldo')
-              .style('background-position', '9% 30%')
+              .style('background-position', '62% 60%')
               .style('background-size', '303%');
             break;
             
         }
       } else {
         d3.select('#waldo')
-          .style('background-position', null)
-          .style('background-size', null);
+          .style('background-position', '52% 0%')
+          .style('background-size', '88%');
       }
     }
   }

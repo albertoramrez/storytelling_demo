@@ -140,6 +140,9 @@
       }
     }
 
+    function zoomImage(selector) {
+
+    }
     return vm;
   }
 })();

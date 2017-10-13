@@ -29,6 +29,7 @@
 
 html {
   font-family: 'Roboto Slab', serif;
+  font-size: 16px;
 }
 
 [layout=row] {
@@ -124,6 +125,15 @@ html {
 
 .slide {
   height: 100vh;
+}
+
+.zoomable-image {
+  height: 90vh;
+  max-width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 1s;
 }
 
 /**
